@@ -10,14 +10,20 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
-  use: {
-    baseURL: 'https://www.saucedemo.com',
-    trace: 'on-first-retry',
-  },
+  use: { trace: 'on-first-retry' },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testIgnore: '**/api/**',
+      use: { ...devices['Desktop Chrome'], baseURL: 'https://www.saucedemo.com' },
+    },
+    {
+      name: 'api',
+      testDir: './tests/api',
+      use: {
+        baseURL: 'https://restful-booker.herokuapp.com',
+        extraHTTPHeaders: { Accept: 'application/json' },
+      },
     },
   ],
 });

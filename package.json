@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test --project=chromium",
+    "test": "playwright test",
     "test-ui": "playwright test --project=chromium --headed",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:api": "playwright test --project=api",
+    "test:ui": "playwright test --project=chromium"
   },
   "keywords": [],
   "author": "",
