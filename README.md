@@ -45,4 +45,8 @@ npx playwright show-report       # Перегляд HTML-звіту
 
 API-тести працюють із власними бронюваннями з унікальними іменами. Фікстура прибирає створені записи, які залишилися після тесту.
 
-GitHub Actions перевіряє типи, запускає UI- та API-тести й зберігає HTML-звіт.
+## GitHub Actions
+
+Workflow запускає перевірку типів, UI- та API-тести на кожен push і для pull request до `main` або `master`.
+
+HTML-звіт доступний у GitHub у розділі **Actions → Playwright Tests → запуск → Artifacts → playwright-report**. Звіт зберігається 30 днів і завантажується також у разі падіння тестів, якщо Playwright встиг його сформувати.
