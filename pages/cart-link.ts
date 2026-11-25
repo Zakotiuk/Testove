@@ -6,7 +6,7 @@ export class CartLink extends Component {
   public badge = this.link.locator('xpath=.//*[@data-test="shopping-cart-badge"]');
 
   @step()
-  public async open() {
+  public async clickCartLink() {
     await this.link.click();
   }
 }

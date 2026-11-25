@@ -26,11 +26,16 @@ export class CheckoutPage extends Component {
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
     await this.postalCodeInput.fill(postalCode);
+    await this.clickContinueButton();
+  }
+
+  @step()
+  public async clickContinueButton() {
     await this.continueButton.click();
   }
 
   @step()
-  public async placeOrder() {
+  public async clickFinishButton() {
     await this.finishButton.click();
   }
 }

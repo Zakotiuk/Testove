@@ -20,7 +20,8 @@ export class ProductsPage extends Component {
   }
 
   @step()
-  public async addToCart(productName: string) {
-    await this.addToCartButton(productName).click();
+  public async clickAddToCartButton(productName: string) {
+    const button = this.addToCartButton(productName);
+    await button.click();
   }
 }

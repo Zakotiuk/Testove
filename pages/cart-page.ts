@@ -13,12 +13,13 @@ export class CartPage extends Component {
   public removeButton = (productName: string) => this.product(productName).locator('xpath=.//button[normalize-space(.)="Remove"]');
 
   @step()
-  public async removeProduct(productName: string) {
-    await this.removeButton(productName).click();
+  public async clickRemoveButton(productName: string) {
+    const button = this.removeButton(productName);
+    await button.click();
   }
 
   @step()
-  public async startCheckout() {
+  public async clickCheckoutButton() {
     await this.checkoutButton.click();
   }
 }

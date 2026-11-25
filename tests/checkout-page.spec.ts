@@ -10,10 +10,10 @@ test('places a two-item order with the expected total and shows confirmation', {
   const expectedTax = 3.20;
 
   for (const { name } of selectedProducts) {
-    await products.addToCart(name);
+    await products.clickAddToCartButton(name);
   }
-  await cartLink.open();
-  await cart.startCheckout();
+  await cartLink.clickCartLink();
+  await cart.clickCheckoutButton();
 
   await expect(page).toHaveURL('/checkout-step-one.html');
   await checkout.submitCustomerDetails({ firstName: 'Alex', lastName: 'Tester', postalCode: '01001' });
@@ -24,7 +24,7 @@ test('places a two-item order with the expected total and shows confirmation', {
   await expect(checkout.tax).toHaveText(`Tax: ${formatPrice(expectedTax)}`);
   await expect(checkout.total).toHaveText(`Total: ${formatPrice(expectedSubtotal + expectedTax)}`);
 
-  await checkout.placeOrder();
+  await checkout.clickFinishButton();
 
   await expect(page).toHaveURL('/checkout-complete.html');
   await expect(checkout.confirmation).toBeVisible();
